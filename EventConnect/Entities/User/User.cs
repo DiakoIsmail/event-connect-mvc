@@ -12,6 +12,7 @@ public class User:PasswordValues
     public string Firstname { get; set; }= String.Empty; 
     public string Lastname { get; set; }= String.Empty;
     public string DisplayName { get; set; }= String.Empty;
+    public string ImageKey { get; set; }= String.Empty;
 
     public List<Post.Post>? Posts { get; set; }
     

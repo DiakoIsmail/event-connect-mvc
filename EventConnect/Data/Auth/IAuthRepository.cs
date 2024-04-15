@@ -9,8 +9,10 @@ public interface IAuthRepository
     Task<ServiceResponse<string>> Login(string email, string password);
     Task<bool> UserExists(string email);
     Task<User> GetUser(string email);
+    Task<User> GetUserById(string userId);
     
     Task<List<User>> GetAllUsersWithIds(List<string> userIds);
-    
-   
+
+
+    Task UpdateUser(User user);
 }

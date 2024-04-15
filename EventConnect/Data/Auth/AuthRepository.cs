@@ -80,7 +80,12 @@ public class AuthRepository: IAuthRepository
 
         public async Task<User> GetUser(string email)
         {
-            return  _context.Users.FirstOrDefault(u => u.Email == email);
+            return   _context.Users.FirstOrDefault(u => u.Email == email);
+        }
+
+        public async Task<User> GetUserById(string userId)
+        {
+            return  _context.Users.FirstOrDefault(u => u.Id == userId);
         }
 
         public  async Task<List<User>> GetAllUsersWithIds(List<string> userIds)
@@ -89,6 +94,13 @@ public class AuthRepository: IAuthRepository
                 .Where(u => userIds.Contains(u.Id)) // Filter users with specific IDs
                 .ToList();
             return users;
+        }
+
+        public async Task UpdateUser(User user)
+        {
+            //Update user
+           _context.Users.Update(user);
+           await _context.SaveChangesAsync();
         }
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
