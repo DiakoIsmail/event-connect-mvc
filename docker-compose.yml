@@ -1,0 +1,15 @@
+﻿services:
+  eventconnect:
+    image: eventconnect
+    build:
+      context: .
+      dockerfile: EventConnect/Dockerfile
+  
+  postgres_server_container:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: kalle
+      POSTGRES_PASSWORD: kalle
+      POSTGRES_DB: event_connect_db
+    ports:
+      - "5432:5432"
